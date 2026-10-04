@@ -10,21 +10,14 @@ def main():
         }
     ]
 
-    print("Mia is online.")
-    print("Type 'byeee' to exit.\n")
-
-    try:
-        opener = get_response(messages) or "hey, you there?"
-        print(f"Mia: {opener}\n")
-        messages.append({"role": "assistant", "content": opener})
-    except Exception as e:
-        print(f"\nError: {e}\n")
+    print("Mai is online.")
+    print("Type 'bye' to exit.\n")
 
     while True:
         user_input = input("You: ")
 
-        if user_input.lower() == "byeee":
-            print("Mia: Byeee ❤️")
+        if user_input.lower() == "bye":
+            print("Mai: Byee ❤️")
             break
 
         if not user_input.strip():
@@ -36,9 +29,9 @@ def main():
         })
 
         try:
-            reply = get_response(messages)
+            reply = (get_response(messages) or "").strip() or "hmm ok, anyway. say something else"
 
-            print(f"Mia: {reply}\n")
+            print(f"Mai: {reply}\n")
 
             messages.append({
                 "role": "assistant",
