@@ -16,7 +16,7 @@ def get_response(messages):
     response = client.chat.completions.create(
         model=MODEL,
         messages=messages,
-        max_tokens=200,
+        max_tokens=120,
         temperature=0.8,
     )
 
