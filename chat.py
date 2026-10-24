@@ -1,23 +1,29 @@
-from huggingface_hub import InferenceClient
+from openai import OpenAI
+from config import OPENROUTER_API_KEY
 
-from config import HF_TOKEN
-from persona import PERSONA
+MODEL = "nvidia/nemotron-3-ultra-550b-a55b:free"
 
-
-# Change this later to whatever model you choose
-MODEL = "Qwen/Qwen3-4B-Instruct-2507"
-client = InferenceClient(
-    provider="auto",
-    api_key=HF_TOKEN
+# Initialize the OpenAI client with OpenRouter's endpoint and mandatory headers
+client = OpenAI(
+    base_url="https://openrouter.ai/api/v1",
+    api_key=OPENROUTER_API_KEY,
+    default_headers={
+        "HTTP-Referer": "https://localhost:3000", # Replace with your actual site URL if applicable
+        "X-Title": "My Local Test App",          # Replace with your actual application name
+    }
 )
 
-
 def get_response(messages):
+    # Keep the context short: persona + last few turns.
+    # Long unbounded histories make free models parrot themselves.
+    trimmed = [messages[0]] + messages[-16:]
+
     response = client.chat.completions.create(
         model=MODEL,
-        messages=messages,
+        messages=trimmed,
         max_tokens=120,
         temperature=0.8,
+        frequency_penalty=0.6,   # discourages repeating the same phrases
+        presence_penalty=0.4,    # discourages looping on the same topics
     )
-
     return response.choices[0].message.content or ""
