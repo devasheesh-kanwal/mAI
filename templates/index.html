@@ -2,29 +2,46 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#ff2d78">
   <title>Mai 💗</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <div class="chat-app">
+  <div class="dreamscape" aria-hidden="true">
+    <span class="cloud cloud-one"></span>
+    <span class="cloud cloud-two"></span>
+    <span class="cloud cloud-three"></span>
+    <span class="floaty heart heart-one">♥</span>
+    <span class="floaty heart heart-two">♥</span>
+    <span class="floaty heart heart-three">♥</span>
+    <span class="floaty sparkle sparkle-one">✦</span>
+    <span class="floaty sparkle sparkle-two">✦</span>
+    <span class="floaty sparkle sparkle-three">✦</span>
+    <span class="floaty bow bow-one">🎀</span>
+    <span class="floaty bow bow-two">🎀</span>
+  </div>
+  <div class="chat-app" id="chatApp">
     <header class="chat-header">
-      <div class="avatar">💗</div>
+      <div class="avatar">
+        <span>💗</span>
+      </div>
       <div class="header-info">
         <h1>Mai</h1>
-        <p><span class="status-dot"></span> online</p>
+        <p><span id="statusText">online</span></p>
       </div>
+      <button id="layoutToggle" class="icon-btn" aria-label="Switch layout" title="Switch to phone layout">📱</button>
+      <button id="themeToggle" class="icon-btn" aria-label="Toggle dark mode" title="Switch to dark mode">🌙</button>
     </header>
 
-    <main class="chat-window" id="chatWindow">
-      <div class="message mai">
-        <div class="bubble">hey you 💕 how was your day?</div>
-      </div>
-    </main>
+    <main class="chat-window" id="chatWindow"></main>
 
     <form class="chat-input" id="chatForm">
-      <input type="text" id="userInput" placeholder="say something..." autocomplete="off" autofocus>
-      <button type="submit" aria-label="Send">➤</button>
+      <input type="text" id="userInput" placeholder="Message" autocomplete="off" autofocus>
+      <button type="submit" class="send-btn" aria-label="Send">➤</button>
     </form>
   </div>
 

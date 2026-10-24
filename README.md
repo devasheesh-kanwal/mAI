@@ -46,7 +46,10 @@ Mai is an AI girlfriend chatbot built in Python, with a hot pink & rose pink web
 
 ## Usage
 
-Just chat. The web UI remembers the conversation as you go, and Mai's messages appear with a typing indicator.
+You start the conversation — just type. It's a clean, glassy messaging UI: a frosted header with Mai's avatar and status, a translucent message area over a shifting pink backdrop, and a frosted input bar. Two small toggles live in the header:
+
+- **📱 / 💻 layout toggle** — flips between the wider PC layout and a compact phone layout (framed mockup on desktop, full-screen on a real phone). Your choice is remembered.
+- **🌙 / ☀️ theme toggle** — switches between light glass and dark rose glass.
 
 ## Notes
 
