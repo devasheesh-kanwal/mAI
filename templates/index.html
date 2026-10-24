@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mai 💗</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="chat-app">
+    <header class="chat-header">
+      <div class="avatar">💗</div>
+      <div class="header-info">
+        <h1>Mai</h1>
+        <p><span class="status-dot"></span> online</p>
+      </div>
+    </header>
+
+    <main class="chat-window" id="chatWindow">
+      <div class="message mai">
+        <div class="bubble">hey you 💕 how was your day?</div>
+      </div>
+    </main>
+
+    <form class="chat-input" id="chatForm">
+      <input type="text" id="userInput" placeholder="say something..." autocomplete="off" autofocus>
+      <button type="submit" aria-label="Send">➤</button>
+    </form>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

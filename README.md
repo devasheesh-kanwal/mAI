@@ -1,10 +1,12 @@
-# Mai 💬
+# Mai 💗
 
-Mai is a terminal-based AI girlfriend chatbot built in Python. She has a custom personality (warm, playful, opinionated — see [`persona.py`](persona.py)) and chats with you in a simple REPL loop.
+Mai is an AI girlfriend chatbot built in Python, with a hot pink & rose pink web UI. She has a custom personality (warm, playful, opinionated — see [`persona.py`](persona.py)).
 
 ## How It Works
 
-- [`main.py`](main.py) — the chat loop: keeps conversation history, handles input/exit, and prints Mai's replies.
+- [`app.py`](app.py) — the Flask web server and `/api/chat` endpoint.
+- [`templates/index.html`](templates/index.html), [`static/style.css`](static/style.css), [`static/script.js`](static/script.js) — the chat UI.
+- [`main.py`](main.py) — optional terminal version of the chatbot (same brain, no web UI).
 - [`chat.py`](chat.py) — talks to the LLM through OpenRouter's OpenAI-compatible API, with tuning (temperature, frequency/presence penalties) and a short context window to keep the free model from repeating itself.
 - [`persona.py`](persona.py) — the system prompt defining Mai's personality.
 - [`config.py`](config.py) — loads the API key from your `.env`.
@@ -35,23 +37,16 @@ Mai is a terminal-based AI girlfriend chatbot built in Python. She has a custom 
 4. **Run it**
 
    ```bash
-   python main.py
+   python app.py
    ```
+
+   Then open [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser.
+
+   (Prefer the terminal? Run `python main.py` instead.)
 
 ## Usage
 
-Just chat. Type `bye` to exit. Type an empty line to skip sending.
-
-```
-Mai is online.
-Type 'bye' to exit.
-
-You: hey, long day
-Mai: rough one? tell me about it
-...
-You: bye
-Mai: Byee ❤️
-```
+Just chat. The web UI remembers the conversation as you go, and Mai's messages appear with a typing indicator.
 
 ## Notes
 
