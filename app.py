@@ -1,6 +1,7 @@
 from flask import Flask, render_template, jsonify, request
 from chat import get_response
 from persona import PERSONA
+import os 
 
 app = Flask(__name__)
 
@@ -33,4 +34,6 @@ def chat():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # Render provides the port dynamically. Default to 5000 for local testing.
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
