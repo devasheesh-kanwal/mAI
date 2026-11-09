@@ -10,14 +10,14 @@ def main():
         }
     ]
 
-    print("Mai is online.")
+    print("Jenseng Jinping is online.")
     print("Type 'bye' to exit.\n")
 
     while True:
         user_input = input("You: ")
 
         if user_input.lower() == "bye":
-            print("Mai: Byee ❤️")
+            print("Jenseng Jinping: Byee ❤️")
             break
 
         if not user_input.strip():
@@ -31,7 +31,7 @@ def main():
         try:
             reply = (get_response(messages) or "").strip() or "hmm ok, anyway. say something else"
 
-            print(f"Mai: {reply}\n")
+            print(f"Jenseng Jinping: {reply}\n")
 
             messages.append({
                 "role": "assistant",

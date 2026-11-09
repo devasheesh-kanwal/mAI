@@ -12,7 +12,7 @@ let history = [];
 /* ── Empty state (quiet hint, no buttons) ── */
 const emptyState = document.createElement("div");
 emptyState.className = "empty-state";
-emptyState.textContent = "Send Mai a message to start";
+emptyState.textContent = "Send Jenseng Jinping a message to start";
 chatWindow.appendChild(emptyState);
 
 /* ── Theme toggle (light / dark) ── */
@@ -98,8 +98,10 @@ async function fetchReply(messages) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ messages }),
   });
-  const data = await res.json();
-  if (data.error) throw new Error(data.error);
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || data.error) {
+    throw new Error(data.error || `Server returned HTTP ${res.status}`);
+  }
   return data.reply || "hmm ok, anyway. say something else";
 }
 
@@ -118,9 +120,9 @@ async function sendMessage(text) {
     hideTyping(typing);
     addMessage("mai", reply);
     history.push({ role: "assistant", content: reply });
-  } catch {
+  } catch (error) {
     hideTyping(typing);
-    addMessage("mai", "ugh, something broke on my end 😿 try again?");
+    addMessage("mai", `API error: ${error.message}`);
   } finally {
     sendButton.disabled = false;
     userInput.focus();

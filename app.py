@@ -1,14 +1,15 @@
 from flask import Flask, render_template, jsonify, request
-from chat import get_response
+from chat import MODEL, get_response
 from persona import PERSONA
 import os 
+
 
 app = Flask(__name__)
 
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index.html", model=MODEL)
 
 
 
